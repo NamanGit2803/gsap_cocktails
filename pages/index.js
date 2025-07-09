@@ -3,6 +3,7 @@ import gsap from "gsap"
 import { ScrollTrigger, SplitText } from "gsap/all"
 import { useEffect, useRef } from "react"
 import { useMediaQuery } from "react-responsive"
+import Cocktails from "@/components/Cocktails"
 
 gsap.registerPlugin(ScrollTrigger, SplitText)
 
@@ -63,10 +64,6 @@ const home = () => {
           end: endValue,
           scrub: true,
           pin : true,
-          onEnter: () => videoRef.current.play(),
-          onLeave: () => videoRef.current.pause(),
-          onEnterBack: () => videoRef.current.play(),
-          onLeaveBack: () => videoRef.current.pause(),
         }
       })
 
@@ -115,9 +112,11 @@ const home = () => {
 
       {/* videos  */}
       <div className="video absolute inset-0">
-        <video ref={videoRef} src="/videos/input.mp4" muted playsInline preload="auto"/>
+        <video ref={videoRef} src="/videos/output.mp4" muted playsInline preload="auto"/>
       </div>
-      <div className="h-[1000px]"></div>
+      
+      {/* cocktails section  */}
+      <Cocktails/>
     </>
   )
 
