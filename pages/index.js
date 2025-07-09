@@ -8,11 +8,11 @@ gsap.registerPlugin(ScrollTrigger, SplitText)
 const home = () => {
 
   useEffect(() => {
-    const heroSplit = new SplitText('.title' ,{
+    const heroSplit = new SplitText('.title', {
       type: 'chars, words',
     })
 
-    const paragraphSplit = new SplitText('.subtitle' ,{
+    const paragraphSplit = new SplitText('.subtitle', {
       type: 'lines',
     })
 
@@ -37,14 +37,25 @@ const home = () => {
       delay: 1,
     })
 
+    gsap.timeline({
+      scrollTrigger: {
+        trigger: '#hero',
+        start: 'top top',
+        end: 'bottom top',
+        scrub: true
+      }
+    })
+      .to('.right-leaf', { y: 200 }, 0)
+      .to('.left-leaf', { y: 200 }, 0)
 
 
 
   }, [])
-  
+
 
   return (
     <>
+      {/* hero sextion  */}
       <section id="hero" className="noisy">
         {/* title  */}
         <h1 className="title">MOJITO</h1>
@@ -60,7 +71,7 @@ const home = () => {
             <div className="space-y-5 hidden md:block">
               <p>Cool. Crisp. Classic</p>
               <p className="subtitle">
-                Sip the Spirit <br/> of Sumer
+                Sip the Spirit <br /> of Summer
               </p>
             </div>
 
@@ -72,10 +83,8 @@ const home = () => {
             </div>
           </div>
         </div>
-
-
-
       </section>
+      <div className="h-[1000px]"></div>
     </>
   )
 
