@@ -4,6 +4,7 @@ import { ScrollTrigger, SplitText } from "gsap/all"
 import { useEffect, useRef } from "react"
 import { useMediaQuery } from "react-responsive"
 import Cocktails from "@/components/Cocktails"
+import About from "@/components/About"
 
 gsap.registerPlugin(ScrollTrigger, SplitText)
 
@@ -11,7 +12,7 @@ const home = () => {
 
   const videoRef = useRef()
 
-  const isMobile = useMediaQuery({maxWidth: 768})
+  const isMobile = useMediaQuery({ maxWidth: 768 })
 
   useEffect(() => {
     const heroSplit = new SplitText('.title', {
@@ -54,24 +55,24 @@ const home = () => {
       .to('.right-leaf', { y: 200 }, 0)
       .to('.left-leaf', { y: 200 }, 0)
 
-      const startValue = isMobile? 'top 50%' : 'center 60%'
-      const endValue = isMobile? '120% top' : 'bottom top'
+    const startValue = isMobile ? 'top 50%' : 'center 60%'
+    const endValue = isMobile ? '120% top' : 'bottom top'
 
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: 'video',
-          start: startValue,
-          end: endValue,
-          scrub: true,
-          pin : true,
-        }
-      })
+    let tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: "video",
+        start: startValue,
+        end: endValue,
+        scrub: true,
+        pin: true,
+      },
+    });
 
-      videoRef.current.onloadedmetadata = ()=>{
-        tl.to(videoRef.current, {
-          currentTime: videoRef.current.duration ,
-      })
-      }
+    videoRef.current.onloadedmetadata = () => {
+      tl.to(videoRef.current, {
+        currentTime: videoRef.current.duration,
+      });
+    };
 
 
 
@@ -112,11 +113,20 @@ const home = () => {
 
       {/* videos  */}
       <div className="video absolute inset-0">
-        <video ref={videoRef} src="/videos/output.mp4" muted playsInline preload="auto"/>
+        <video
+          ref={videoRef}
+          muted
+          playsInline
+          preload="auto"
+          src="/videos/output.mp4"
+        />
       </div>
-      
+
       {/* cocktails section  */}
-      <Cocktails/>
+      <Cocktails />
+
+      {/* about section  */}
+      <About/>
     </>
   )
 
