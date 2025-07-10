@@ -5,6 +5,9 @@ import { useEffect, useRef } from "react"
 import { useMediaQuery } from "react-responsive"
 import Cocktails from "@/components/Cocktails"
 import About from "@/components/About"
+import Art from "@/components/Art"
+import Menu from "@/components/Menu"
+import Contact from "@/components/Contact"
 
 gsap.registerPlugin(ScrollTrigger, SplitText)
 
@@ -127,6 +130,15 @@ const home = () => {
 
       {/* about section  */}
       <About/>
+
+      {/* art section  */}
+      <Art/>
+
+      {/* menu section  */}
+      <Menu/>
+
+      {/* contact section */}
+      <Contact/>
     </>
   )
 
